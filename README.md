@@ -25,9 +25,9 @@ npm install
 npm run dev
 ```
 3. Setup OpenAI API key 
-* Replace the `open_ai_key` with open_AI_KEY for `VITE_OPENAI_KEY` variable in the `.env` file.
+* Replace the `open_ai_key` with OPEN_AI_KEY for `VITE_OPENAI_KEY` variable in the `.env` file.
 
 4. Setup Base url for SubmitAPI Call (Optional)
 * If need to made actual api call for submit-
-* The replace the `VITE_API_BASE_URL` and `VITE_SUBMIT_DATA` as per base url and endpoint of API .
+* The replace the `VITE_API_BASE_URL` and `VITE_SUBMIT_DATA` as per base url and endpoint of submit API respectively in `.env` file.
 

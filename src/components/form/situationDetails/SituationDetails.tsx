@@ -70,25 +70,20 @@ const SituationDetails = ({ onBack, onSubmitFinal }: any) => {
     try {
       setAiField(fieldName);
       setLoadingAI(true);
-      let suggestion = "";
-      let prompt = `Please consider below details and return the response in object of {financialSituation:string,employmentCircumstances:string, employmentCircumstances:string};
-        the details are ${JSON.stringify(familyFinanceDetails)}`;
+      let prompt = "";
       if (fieldName == "financialSituation") {
         setAiModalLable(t("financialSituation"));
         prompt = `I am ${familyFinanceDetails.employmentStatus} with ${familyFinanceDetails.monthlyIncome} monthly income, 
         Help me describe my hardship.`;
-        suggestion = `Despite having a monthly income of 3000, I struggle with financial hardship due to various factors. The cost of living in my area is high, making it difficult to make ends meet with my current salary. I often find myself having to prioritize basic necessities such as rent, groceries, and utilities over other expenses. Additionally, unexpected expenses such as medical bills or car repairs can quickly deplete my limited funds, leaving me feeling financially strained. Despite working hard, it can be challenging to save for the future or afford luxuries such as travel or entertainment. Overall, my monthly income of 3000 is not enough to comfortably support myself and my family, leading to feelings of stress and anxiety about my financial situation.`;
       } else if (fieldName == "employmentCircumstances") {
         setAiModalLable(t("employmentCircumstances"));
         prompt = `I am ${familyFinanceDetails.employmentStatus} with ${familyFinanceDetails.monthlyIncome} and ${familyFinanceDetails.dependents}, ${familyFinanceDetails.maritalStatus}, ${familyFinanceDetails.housingStatus}.Help me describe my employement circumstances.`;
-        suggestion = `I am a single homeowner with a stable job that provides me with a monthly salary of 3000 and 4. I am fortunate to have a new house, which I have worked hard to achieve through my employment. My job allows me to afford my mortgage and other living expenses comfortably. Overall, I am content with my employment circumstances and grateful for the opportunities that have allowed me to become a homeowner.`;
       }
       if (fieldName == "reasonForApplying") {
         setAiModalLable(t("reasonForApplying"));
         prompt = `I am ${familyFinanceDetails.employmentStatus} with ${familyFinanceDetails.monthlyIncome} and ${familyFinanceDetails.dependents}, ${familyFinanceDetails.maritalStatus}, ${familyFinanceDetails.housingStatus}.Help me describe reasion for apply govt finance assistance.`;
-        suggestion = `I am facing financial hardship due to the high cost of living and my single income. I am struggling to make ends meet, especially with the added expenses of a new house. I believe that government financial assistance would provide much-needed support in helping me cover essential expenses and improve my overall financial stability.`;
       }
-      // const suggestion = await generateAIText(prompt);
+      const suggestion = await generateAIText(prompt);
       setAiSuggestion(suggestion);
       setOpen(true);
     } catch (error: any) {
