@@ -1,0 +1,106 @@
+{
+  "personalinfo":"المعلومات الشخصية",
+  "financialnfio":"المعلومات المالية",
+  "situation":"الموقف",
+  "name": "اسم",
+  "nationalId": "الهوية الوطنية",
+  "dob": "تاريخ الميلاد",
+  "gender": "جنس", 
+  "address": "عنوان",
+  "city": "مدينة",
+  "state": "ولاية",
+  "country": "دولة",
+  "phone": "هاتف",
+  "email": "بريد إلكتروني",
+  "maritalStatus": "الحالة الاجتماعية",
+  "dependents": "المعالين",
+  "employmentStatus": "الحالة الوظيفية",
+  "monthlyIncome": "الدخل الشهري",
+  "housingStatus": "حالة السكن",
+  "financialSituation": "الوضع المالي",
+  "employmentCircumstances": "ظروف العمل",
+  "reasonForApplying": "سبب التقديم",
+  "helpWrite":"ساعدني في الكتابة",
+  "next": "التالي",
+  "back": "خلف",
+  "submit":"يُقدِّم",
+  "male":"ذكر",
+  "female":"أنثى",
+  "other": "آخر",
+  "single": "أعزب",
+  "married": "متزوج",
+  "employed": "موظف",
+  "unemployed": "غير موظف",
+  "discard":"ينبذ",
+  "edit":"يحرر",
+  "accept":"يقبل",
+  "backToHome":"عودة إلى المنزل",
+   "success":{
+    "heading":"تم تقديم الطلب بنجاح!",
+    "message":"نشكرك على إتمام جميع الخطوات. سيقوم فريقنا بمراجعة معلوماتك والتواصل معك قريباً."
+  },
+  "error":{
+    "heading":"404",
+    "subHeading":"الصفحة غير موجودة",
+    "message":"الصفحة التي تبحث عنها غير موجودة أو تم نقلها.",
+    "boundry":{
+      "heading":"حدث خطأ ما",
+      "btnText": "إعادة تحميل الصفحة"
+    }
+  },
+  "validationError": {
+    "personalInfo":{
+      "name":{
+        "invalid": "أدخل اسمًا صالحًا",
+        "min":"يجب أن يكون الاسم مكونًا من حرفين على الأقل",
+        "max":"الاسم طويل جدًا"
+      },
+      "nationalId":{
+        "invalid":"يجب أن تكون بطاقة الهوية الوطنية مكونة من 15 حرفًا أبجديًا رقميًا صالحًا"
+      },
+      "dob":{
+        "required":"تاريخ ميلاد غير صالح",
+        "notFuture":"لا يمكن أن يكون تاريخ الميلاد تاريخًا مستقبليًا",
+        "validAge":"أدخل عمرك أكبر من 18 سنة"
+      },
+      "gender": {
+        "invalid":"اختر الجنس"
+      },
+      "address":{
+        "invalid": "أدخل عنوانًا صالحًا",
+        "min":"أدخل العنوان",
+        "max":"العنوان طويل جدًا"
+    },
+      "city":{
+        "invalid": "أدخل مدينة صالحة",
+        "min":"المدينة مطلوبة"
+      },
+      "state":{
+        "invalid": "أدخل حالة صالحة",
+        "min":"الدولة مطلوبة"
+      },
+      "country":{
+        "invalid": "أدخل دولة صالحة",
+        "min":"المقاطعة مطلوبة"
+      },
+      "phone":{
+        "invalid":"أدخل رقم هاتف صالح"
+      },
+      "email":{
+        "invalid":"أدخل بريدًا إلكترونيًا صحيحًا"
+      }
+    },
+    "financialInfo":{
+      "maritalStatus":{"required":"اختر الحالة الاجتماعية"},
+      "dependents":{"min":"أدخل التابعين"},
+      "employmentStatus":{"required":"اختر الحالة الوظيفية"},
+      "monthlyIncome":{"min":"أدخل الدخل الشهري"},
+      "housingStatus":{"required":"أدخل حالة السكن"}
+    },
+    "situationInfo":{
+      "financialSituation": {"invalid":"أدخل الوضع الصحيح"},
+      "employmentCircumstances": {"invalid": "أدخل الظروف الصحيحة"},
+      "reasonForApplying": {"invalid": "أدخل سببًا صالحًا للتقديم"}
+    }
+  }
+}

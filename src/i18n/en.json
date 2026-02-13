@@ -1,0 +1,106 @@
+{
+  "personalinfo":"Personal Info",
+  "financialnfio":"Finacial Info",
+  "situation":"Situation",
+  "name": "Name",
+  "nationalId": "National ID",
+  "dob": "Date Of Birth",
+  "gender": "Gender", 
+  "address": "Address",
+  "city": "City",
+  "state": "State",
+  "country": "Country",
+  "phone": "Phone",
+  "email": "Email",
+  "maritalStatus": "Marrital Status",
+  "dependents": "Dependents",
+  "employmentStatus": "Employment Status",
+  "monthlyIncome": "Monthly Income",
+  "housingStatus": "Housing Status",
+  "financialSituation": "Financial Situation",
+  "employmentCircumstances": "Employment Circumstances",
+  "reasonForApplying": "Reason For Applying",
+  "helpWrite":"Help Me Write",
+  "next": "Next",
+  "back": "Back",
+  "submit":"Submit",
+  "male":"Male",
+  "female":"Female",
+  "other": "Other",
+  "single": "Single",
+  "married": "Married",
+  "employed": "Employed",
+  "unemployed": "Unemployed",
+  "discard":"Discard",
+  "edit":"Edit",
+  "accept":"Accept",
+  "backToHome":"Go Back Home",
+  "success":{
+    "heading":"Application Submitted Successfully!",
+    "message":" Thank you for completing all steps. Our team will review your information and contact you soon."
+  },
+  "error":{
+    "heading":"404",
+    "subHeading":"Page Not Found",
+    "message":"The page you are looking for doesn’t exist or has been moved.",
+    "boundry":{
+      "heading":"Something went wrong",
+      "btnText": "Reload Page"
+    }
+  },
+  "validationError": {
+    "personalInfo":{
+      "name":{
+        "invalid": "Enter Valid name",
+        "min":"Name must be at least 2 characters",
+        "max":"Name is too long"
+      },
+      "nationalId":{
+        "invalid":"National ID must be 15 alphanumeric Valid characters"
+      },
+      "dob":{
+        "required":"Invalid DOB",
+        "notFuture":"DOB can not be future date",
+        "validAge":"Enter age greter than 18 years."
+      },
+      "gender": {
+        "invalid":"Selet Gender"
+      },
+      "address":{
+        "invalid": "Enter valid address",
+        "min":"Enter address",
+        "max":"Address is too long"
+    },
+      "city":{
+        "invalid": "Enter valid city",
+        "min":"City is required"
+      },
+      "state":{
+        "invalid": "Enter valid state",
+        "min":"State is required"
+      },
+      "country":{
+        "invalid": "Enter valid country",
+        "min":"County is required"
+      },
+      "phone":{
+        "invalid":"Enter Valid phone number"
+      },
+      "email":{
+        "invalid":"Enter valid email"
+      }
+    },
+    "financialInfo":{
+       "maritalStatus":{"required":"Select Marital Status"},
+      "dependents":{"min":"Enter dependents"},
+      "employmentStatus":{"required":"Select Employment Statues"},
+      "monthlyIncome":{"min":"Enter monthly income"},
+      "housingStatus":{"required":"Enter Housing Status"}
+    },
+    "situationInfo":{
+      "financialSituation": {"invalid":"Enter valid situation"},
+      "employmentCircumstances": {"invalid": "Enter valid Circumstances"},
+      "reasonForApplying": {"invalid": "Enter valid reason for apply"}
+    }
+  }
+}
