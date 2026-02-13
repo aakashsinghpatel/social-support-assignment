@@ -17,20 +17,19 @@ import { useTranslation } from "react-i18next";
 import { selectFamilyFinanceDetails } from "../../../features/application/applicaionSelector";
 import { useEffect } from "react";
 import { saveToStorage } from "../../../utils/localStorage";
+import type { FamilyFinanceDetails } from "../../../features/application/types";
 
-const FamilyFinancialDetails = ({ onNext, onBack }: any) => {
+type FamilyFinancialDetailsProps = {
+  onNext: ()=>void;
+  onBack: ()=>void;
+}
+
+const FamilyFinancialDetails = ({ onNext, onBack }: FamilyFinancialDetailsProps) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const financialData = useSelector(selectFamilyFinanceDetails);
-
-  /* 
-    * Help to update form with data save locally
-  */
-  useEffect(() => {
-    reset(financialData);
-  }, [financialData]);
 
   /* 
    * Created form with react-hook form and enbled custom valid with zod lib at control level
@@ -47,10 +46,17 @@ const FamilyFinancialDetails = ({ onNext, onBack }: any) => {
   });
 
   /* 
+   * Help to update form with data save locally
+  */
+  useEffect(() => {
+    reset(financialData);
+  }, [financialData,reset]);
+
+  /* 
     * onSubmit
     * Method to save finaceDetail on click of next button to store and local storage
   */
-  const onSubmit = (data: any) => {
+  const onSubmit = (data: FamilyFinanceDetails) => {
     dispatch(saveFamilyFinanceDetails(data));
     saveToStorage("familyFinanceDetails", data);
     onNext();

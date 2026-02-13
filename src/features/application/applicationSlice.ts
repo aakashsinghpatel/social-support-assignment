@@ -1,11 +1,49 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { ApplicationState } from "./types";
+import type {
+  ApplicationState,
+  FamilyFinanceDetails,
+  PersonalDetails,
+  SituationDetails,
+} from "./types";
+import { hasData } from "../../utils/validation";
 
-/* Intial state of application state */
+
+/* Intial state of application 
+  * Initializing all state of application
+*/
+
+const initPersonalDetails: PersonalDetails = {
+  name: "",
+  nationalId: "",
+  dob: "",
+  gender: "",
+  address: "",
+  city: "",
+  state: "",
+  country: "",
+  phone: "",
+  email: "",
+};
+
+const initFamilyFinanceDetails: FamilyFinanceDetails = {
+  maritalStatus: "",
+  dependents: 0,
+  employmentStatus: "",
+  monthlyIncome: 0,
+  housingStatus: "",
+};
+
+const initSituationDetails: SituationDetails = {
+  financialSituation: "",
+  employmentCircumstances: "",
+  reasonForApplying: "",
+};
+
+
 const initialState: ApplicationState = {
-  personalDetails: {},
-  familyFinanceDetails: {},
-  situationDetails: {},
+  personalDetails: initPersonalDetails,
+  familyFinanceDetails: initFamilyFinanceDetails,
+  situationDetails: initSituationDetails,
   currentStep: 0,
   loading: false,
   errorMessage: null,
@@ -32,7 +70,11 @@ const applicationSlice = createSlice({
       const { personalDetails, familyFinanceDetails, situationDetails } =
         action.payload;
       let step = 0;
-      const [isPersonalDetails, isFinancialDetails,isSituationDetails] = [personalDetails && Object.keys(personalDetails).length>0, familyFinanceDetails && Object.keys(familyFinanceDetails).length>0, situationDetails && Object.keys(situationDetails).length>0];
+      const [isPersonalDetails, isFinancialDetails, isSituationDetails] = [
+        hasData(personalDetails),
+        hasData(familyFinanceDetails),
+        hasData(situationDetails),
+      ];
       if (isPersonalDetails && isFinancialDetails && isSituationDetails) {
         step = 2;
       } else if (isPersonalDetails && isFinancialDetails) {

@@ -3,11 +3,14 @@ import { useDispatch } from "react-redux";
 import { setErrorMessage } from "../../features/application/applicationSlice";
 
 
+type ErrorProps = {
+  errorMessage:string | null
+}
 /* 
   * ErrorAlert
   * Component to show error based on API Call response/error
  */
-const ErrorAlert = ({ errorMessage }: any) => {
+const ErrorAlert = ({ errorMessage }: ErrorProps) => {
   const dispatch = useDispatch();
   return (
     <Snackbar

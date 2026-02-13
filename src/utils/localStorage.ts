@@ -1,8 +1,12 @@
+import type { FamilyFinanceDetails, PersonalDetails, SituationDetails } from "../features/application/types";
+
+
+type localStorageValueType = PersonalDetails | FamilyFinanceDetails |SituationDetails;
 
 /* saveToStorage <key,data>
 * Method to save data to localstorage based on key
 */
-export const saveToStorage = (key: string, data: any) => {
+export const saveToStorage = (key: string, data: localStorageValueType) => {
   try {
     localStorage.setItem(key, JSON.stringify(data));
   } catch (error) {

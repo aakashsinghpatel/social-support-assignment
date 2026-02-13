@@ -19,6 +19,7 @@ import Loader from "../components/loader/Loader";
 import { ErrorAlert } from "../components/errorAlert/ErrorAlert";
 import { useNavigate } from "react-router-dom";
 import { submitData } from "../services/application.service";
+import type { SituationDetails } from "../features/application/types";
 
 const PersonalDetails = lazy(
   () => import("../components/form/PersonalDetails/PersonalDetails"),
@@ -60,7 +61,7 @@ const ApplicationPage = () => {
    * Method to send all form details to API
    * Handle succes and failure to move to success and error page respectively
    */
-  const submitDetails = async (situationDetails: any) => {
+  const submitDetails = async (situationDetails: SituationDetails) => {
     dispatch(setLoading(true));
     const { personalDetails, familyFinanceDetails } = appState;
     try {
@@ -102,7 +103,7 @@ const ApplicationPage = () => {
           {currentStep === 2 && (
             <SituationDetails
               onBack={() => updateAplicationStep(1)}
-              onSubmitFinal={(situationDetails: any) =>
+              onSubmitFinal={(situationDetails: SituationDetails) =>
                 submitDetails(situationDetails)
               }
             />

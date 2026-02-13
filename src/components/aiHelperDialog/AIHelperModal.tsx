@@ -7,32 +7,30 @@ import {
   Typography,
   TextField,
 } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-
+type AiModalProps = {
+  open:boolean;
+  label:string;
+  suggestion:string;
+  onAccept: (text: string)=>void;
+  onClose: ()=>void;
+}
 /* 
   * Component to show AI suggestion for field of Situatuion form with all action recommended
  */
-const AIHelperModal = ({ open, label, suggestion, onAccept, onClose }: any) => {
+const AIHelperModal = ({ open, label, suggestion, onAccept, onClose }: AiModalProps) => {
   const [isEditing, setIsEditing] = useState(false);
-  const [editedText, setEditedText] = useState("");
+  const [editedText, setEditedText] = useState(suggestion);
   const { t } = useTranslation();
-
-  /* 
-  * Update required field as AI Modal shown
-  */
-  useEffect(() => {
-    setEditedText(suggestion || "");
-    setIsEditing(false);
-  }, [open]);
 
   /* 
   * update test and status on modal close
   */
   const handleClose = () => {
     setIsEditing(false);
-    setEditedText(suggestion);
+    setEditedText("");
     onClose();
   };
 
@@ -43,6 +41,14 @@ const AIHelperModal = ({ open, label, suggestion, onAccept, onClose }: any) => {
     onAccept(editedText);
     setIsEditing(false);
   };
+
+  /* handleEdit
+  * make editable suggestion  in textfield
+  */
+  const handleEdit = () => {
+    setIsEditing(true)
+    setEditedText(suggestion);
+  }
 
   return (
     <Dialog open={open} onClose={onClose} fullWidth maxWidth="sm">
@@ -66,7 +72,7 @@ const AIHelperModal = ({ open, label, suggestion, onAccept, onClose }: any) => {
       <DialogActions>
         <Button onClick={handleClose}>{t("discard")}</Button>
         {!isEditing && (
-          <Button onClick={() => setIsEditing(true)}>{t("edit")}</Button>
+          <Button onClick={() => handleEdit()}>{t("edit")}</Button>
         )}
         {
           <Button onClick={handleAccept} variant="contained">

@@ -25,8 +25,16 @@ import {
   selectSituationDetails,
 } from "../../../features/application/applicaionSelector";
 import { saveToStorage } from "../../../utils/localStorage";
+import type { SituationDetails } from "../../../features/application/types";
 
-const SituationDetails = ({ onBack, onSubmitFinal }: any) => {
+type SituationDetailsProps = {
+  onBack: ()=>void;
+  onSubmitFinal: (data:SituationDetails)=>void;
+}
+
+type SituationFormFieldType ="financialSituation" | "employmentCircumstances" | "reasonForApplying";
+
+const SituationDetails = ({ onBack, onSubmitFinal }: SituationDetailsProps) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const theme = useTheme();
@@ -36,16 +44,9 @@ const SituationDetails = ({ onBack, onSubmitFinal }: any) => {
   const [aiSuggestion, setAiSuggestion] = useState("");
   const [aiModalLable, setAiModalLable] = useState("");
   const [open, setOpen] = useState(false);
-  const [aiField, setAiField] = useState("");
+  const [aiField, setAiField] = useState<SituationFormFieldType>("financialSituation");
   const situationData = useSelector(selectSituationDetails);
   const familyFinanceDetails = useSelector(selectFamilyFinanceDetails);
-
- /* 
-    * Help to update form with data save locally
-  */
-  useEffect(() => {
-    reset(situationData);
-  }, [situationData]);
 
   /* 
    * Created form with react-hook form and enbled custom valid with zod lib at control level
@@ -61,12 +62,20 @@ const SituationDetails = ({ onBack, onSubmitFinal }: any) => {
     defaultValues: situationData || {},
   });
 
+   /* 
+   * Help to update form with data save locally
+  */
+  useEffect(() => {
+    reset(situationData);
+  }, [situationData, reset]);
+
+
   /* 
     * handleAI: <Field name>
     * Make call to chat completion API based on field for which AI suggestion requested.
     * And open the AiSuggestion action Nodal
   */
-  const handleAI = async (fieldName: string) => {
+  const handleAI = async (fieldName: SituationFormFieldType) => {
     try {
       setAiField(fieldName);
       setLoadingAI(true);
@@ -108,7 +117,7 @@ const SituationDetails = ({ onBack, onSubmitFinal }: any) => {
   * Save Situation details to redux and localStorage
   * initiate api call for final submit of all deatails
   */
-  const onSubmit = (situationDetails: any) => {
+  const onSubmit = (situationDetails: SituationDetails) => {
     dispatch(saveSituationDetails(situationDetails));
     saveToStorage("situationDetails", situationDetails);
     onSubmitFinal(situationDetails);
@@ -231,16 +240,16 @@ const SituationDetails = ({ onBack, onSubmitFinal }: any) => {
           </Box>
         </form>
       </Box>
-
-      <AIHelperModal
-        open={open}
-        label={aiModalLable}
-        suggestion={aiSuggestion}
-        onAccept={(text: string) => setSuggestionToField(text)}
-        onClose={() => {
-          setOpen(false);
-        }}
-      />
+      {open?
+        <AIHelperModal
+          open={open}
+          label={aiModalLable}
+          suggestion={aiSuggestion}
+          onAccept={(text: string) => setSuggestionToField(text)}
+          onClose={() => {
+            setOpen(false);
+          }}
+        />: <></>}
     </>
   );
 };

@@ -21,20 +21,18 @@ import { selectPersonalDetails } from "../../../features/application/applicaionS
 
 import { useEffect } from "react";
 import { saveToStorage } from "../../../utils/localStorage";
+import type { PersonalDetails } from "../../../features/application/types";
 
-const PersonalDetails = ({ onNext }: any) => {
+type PersonalDetailsProps = {
+  onNext: ()=>void;
+}
+
+const PersonalDetails = ({ onNext }: PersonalDetailsProps) => {
   const { t } = useTranslation();
   const dispatch = useDispatch<AppDispatch>();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const personalData = useSelector(selectPersonalDetails);
-
-  /* 
-    * Help to update form with data save locally
-  */
-  useEffect(() => {
-    reset(personalData);
-  }, [personalData]);
 
   /* 
    * Created form with react-hook form and enbled custom valid with zod lib at control level
@@ -51,11 +49,18 @@ const PersonalDetails = ({ onNext }: any) => {
   });
 
   /* 
+   * Help to update form with data save locally
+  */
+  useEffect(() => {
+    reset(personalData);
+  }, [personalData,reset]);
+
+  /* 
     * onSubmit
     * Method to save personal details on click of next button to store and local storage
   */
-  const onSubmit = (data: any) => {
-    const updateData = {
+  const onSubmit = (data: PersonalDetails) => {
+    const updateData:PersonalDetails = {
       ...data,
       dob: data.dob ? dayjs(data.dob).toISOString() : null,
     };
