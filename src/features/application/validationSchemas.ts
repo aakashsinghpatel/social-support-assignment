@@ -156,7 +156,7 @@ export const createFamilyFinanceDetailsSchema = (t: (key: string) => string) =>
       },
       z
         .number({ message: t("validationError.financialInfo.dependents.min") })
-        .min(1, { message: t("validationError.financialInfo.dependents.min") }),
+        .min(0, { message: t("validationError.financialInfo.dependents.min") }),
     ),
     /* employment status field validation
      * should be valid non-empty string
@@ -179,7 +179,7 @@ export const createFamilyFinanceDetailsSchema = (t: (key: string) => string) =>
         .number({
           message: t("validationError.financialInfo.monthlyIncome.min"),
         })
-        .min(1, {
+        .min(0, {
           message: t("validationError.financialInfo.monthlyIncome.min"),
         }),
     ),

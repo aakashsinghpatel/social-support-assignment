@@ -43,7 +43,7 @@ function App() {
   );
 
   /* createCache-
-   * To handle LT & RTL theme
+   * To handle LTR & RTL theme
    * To align css changes based on language
    */
   const cache = useMemo(
