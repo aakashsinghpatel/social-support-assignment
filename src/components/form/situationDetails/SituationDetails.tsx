@@ -28,11 +28,14 @@ import { saveToStorage } from "../../../utils/localStorage";
 import type { SituationDetails } from "../../../features/application/types";
 
 type SituationDetailsProps = {
-  onBack: ()=>void;
-  onSubmitFinal: (data:SituationDetails)=>void;
-}
+  onBack: () => void;
+  onSubmitFinal: () => void;
+};
 
-type SituationFormFieldType ="financialSituation" | "employmentCircumstances" | "reasonForApplying";
+type SituationFormFieldType =
+  | "financialSituation"
+  | "employmentCircumstances"
+  | "reasonForApplying";
 
 const SituationDetails = ({ onBack, onSubmitFinal }: SituationDetailsProps) => {
   const { t } = useTranslation();
@@ -41,16 +44,18 @@ const SituationDetails = ({ onBack, onSubmitFinal }: SituationDetailsProps) => {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const [loadingAI, setLoadingAI] = useState(false);
+  const [loadingStep, setLoadingStep] = useState(0);
   const [aiSuggestion, setAiSuggestion] = useState("");
   const [aiModalLable, setAiModalLable] = useState("");
   const [open, setOpen] = useState(false);
-  const [aiField, setAiField] = useState<SituationFormFieldType>("financialSituation");
+  const [aiField, setAiField] =
+    useState<SituationFormFieldType>("financialSituation");
   const situationData = useSelector(selectSituationDetails);
   const familyFinanceDetails = useSelector(selectFamilyFinanceDetails);
 
-  /* 
+  /*
    * Created form with react-hook form and enbled custom valid with zod lib at control level
-  */
+   */
   const {
     control,
     handleSubmit,
@@ -62,33 +67,35 @@ const SituationDetails = ({ onBack, onSubmitFinal }: SituationDetailsProps) => {
     defaultValues: situationData || {},
   });
 
-   /* 
+  /*
    * Help to update form with data save locally
-  */
+   */
   useEffect(() => {
     reset(situationData);
   }, [situationData, reset]);
 
-
-  /* 
-    * handleAI: <Field name>
-    * Make call to chat completion API based on field for which AI suggestion requested.
-    * And open the AiSuggestion action Nodal
-  */
+  /*
+   * handleAI: <Field name>
+   * Make call to chat completion API based on field for which AI suggestion requested.
+   * And open the AiSuggestion action Nodal
+   */
   const handleAI = async (fieldName: SituationFormFieldType) => {
     try {
       setAiField(fieldName);
       setLoadingAI(true);
       let prompt = "";
       if (fieldName == "financialSituation") {
+        setLoadingStep(1);
         setAiModalLable(t("financialSituation"));
         prompt = `I am ${familyFinanceDetails.employmentStatus} with ${familyFinanceDetails.monthlyIncome} monthly income, 
         Help me describe my hardship.`;
       } else if (fieldName == "employmentCircumstances") {
+        setLoadingStep(2);
         setAiModalLable(t("employmentCircumstances"));
         prompt = `I am ${familyFinanceDetails.employmentStatus} with ${familyFinanceDetails.monthlyIncome} and ${familyFinanceDetails.dependents}, ${familyFinanceDetails.maritalStatus}, ${familyFinanceDetails.housingStatus}.Help me describe my employement circumstances.`;
       }
       if (fieldName == "reasonForApplying") {
+        setLoadingStep(3);
         setAiModalLable(t("reasonForApplying"));
         prompt = `I am ${familyFinanceDetails.employmentStatus} with ${familyFinanceDetails.monthlyIncome} and ${familyFinanceDetails.dependents}, ${familyFinanceDetails.maritalStatus}, ${familyFinanceDetails.housingStatus}.Help me describe reasion for apply govt finance assistance.`;
       }
@@ -99,28 +106,29 @@ const SituationDetails = ({ onBack, onSubmitFinal }: SituationDetailsProps) => {
       dispatch(setErrorMessage(error?.message));
     } finally {
       setLoadingAI(false);
+      setLoadingStep(0);
     }
   };
 
-  /* 
-    * setSuggestionToField: AiSuggestion
-    * Update the Field with AI suggested or user edited content, as per action(Accept/edit)
-    * In ai suggestion modal
+  /*
+   * setSuggestionToField: AiSuggestion
+   * Update the Field with AI suggested or user edited content, as per action(Accept/edit)
+   * In ai suggestion modal
    */
   const setSuggestionToField = (text: string) => {
     setValue(aiField, text, { shouldValidate: true });
     setOpen(false);
   };
 
-  /* 
-  * onSubmit;
-  * Save Situation details to redux and localStorage
-  * initiate api call for final submit of all deatails
-  */
+  /*
+   * onSubmit;
+   * Save Situation details to redux and localStorage
+   * initiate api call for final submit of all deatails
+   */
   const onSubmit = (situationDetails: SituationDetails) => {
     dispatch(saveSituationDetails(situationDetails));
     saveToStorage("situationDetails", situationDetails);
-    onSubmitFinal(situationDetails);
+    onSubmitFinal();
   };
 
   return (
@@ -165,7 +173,11 @@ const SituationDetails = ({ onBack, onSubmitFinal }: SituationDetailsProps) => {
                 onClick={() => handleAI("financialSituation")}
                 disabled={loadingAI}
               >
-                {loadingAI ? <CircularProgress size={18} /> : t("helpWrite")}
+                {loadingAI && loadingStep == 1 ? (
+                  <CircularProgress size={18} />
+                ) : (
+                  t("helpWrite")
+                )}
               </Button>
             </Grid>
 
@@ -195,7 +207,11 @@ const SituationDetails = ({ onBack, onSubmitFinal }: SituationDetailsProps) => {
                 onClick={() => handleAI("employmentCircumstances")}
                 disabled={loadingAI}
               >
-                {t("helpWrite")}
+                {loadingAI && loadingStep == 2 ? (
+                  <CircularProgress size={18} />
+                ) : (
+                  t("helpWrite")
+                )}
               </Button>
             </Grid>
 
@@ -223,14 +239,24 @@ const SituationDetails = ({ onBack, onSubmitFinal }: SituationDetailsProps) => {
                 onClick={() => handleAI("reasonForApplying")}
                 disabled={loadingAI}
               >
-                {t("helpWrite")}
+                {loadingAI && loadingStep == 3 ? (
+                  <CircularProgress size={18} />
+                ) : (
+                  t("helpWrite")
+                )}
               </Button>
             </Grid>
           </Grid>
 
           {/* Submit and Back button */}
           <Box mt={4} display="flex" justifyContent="space-between">
-            <Button variant="outlined" onClick={onBack} fullWidth={isMobile} sx={{ mr:2}} aria-label="back">
+            <Button
+              variant="outlined"
+              onClick={onBack}
+              fullWidth={isMobile}
+              sx={{ mr: 2 }}
+              aria-label="back"
+            >
               {t("back")}
             </Button>
 
@@ -240,7 +266,7 @@ const SituationDetails = ({ onBack, onSubmitFinal }: SituationDetailsProps) => {
           </Box>
         </form>
       </Box>
-      {open?
+      {open ? (
         <AIHelperModal
           open={open}
           label={aiModalLable}
@@ -249,7 +275,10 @@ const SituationDetails = ({ onBack, onSubmitFinal }: SituationDetailsProps) => {
           onClose={() => {
             setOpen(false);
           }}
-        />: <></>}
+        />
+      ) : (
+        <></>
+      )}
     </>
   );
 };

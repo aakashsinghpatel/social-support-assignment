@@ -6,7 +6,6 @@ import {
   selectApplicationCurrentStep,
   selectApplicationErrorMessage,
   selectApplicationLading,
-  selectApplicationState,
 } from "../features/application/applicaionSelector";
 import {
   resetApplication,
@@ -41,10 +40,8 @@ const ApplicationPage = () => {
   const navigate = useNavigate();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-
   /* All reuired state selector */
   const currentStep = useSelector(selectApplicationCurrentStep);
-  const appState = useSelector(selectApplicationState);
   const isLoading = useSelector(selectApplicationLading);
   const errorMessage = useSelector(selectApplicationErrorMessage);
 
@@ -61,15 +58,10 @@ const ApplicationPage = () => {
    * Method to send all form details to API
    * Handle succes and failure to move to success and error page respectively
    */
-  const submitDetails = async (situationDetails: SituationDetails) => {
+  const submitDetails = async () => {
     dispatch(setLoading(true));
-    const { personalDetails, familyFinanceDetails } = appState;
     try {
-      await submitData({
-        personalDetails,
-        familyFinanceDetails,
-        situationDetails,
-      });
+      await submitData();
       dispatch(setLoading(false));
       dispatch(resetApplication());
       clearStorage();
@@ -103,8 +95,8 @@ const ApplicationPage = () => {
           {currentStep === 2 && (
             <SituationDetails
               onBack={() => updateAplicationStep(1)}
-              onSubmitFinal={(situationDetails: SituationDetails) =>
-                submitDetails(situationDetails)
+              onSubmitFinal={() =>
+                submitDetails()
               }
             />
           )}

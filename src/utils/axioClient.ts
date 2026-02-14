@@ -14,17 +14,9 @@ const OpenAiclient = axios.create({
   },
 });
 
-/* Create baseAPI cliet of axios to handle submit (server based)  */
-const baseApiCLient = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL,
-  headers: {
-    "Content-Type": "application/json",
-  },
-});
-
 /*  Error handler : Handel varius error code, Timeout etc
 * It handle all error based on status code and return error message accordingly
-* used for both baseApiClient and OpenAIClient
+* used for OpenAIClient
 */
 const erroHandler = (error: AxiosError) => {
   let message = "Something went wrong";
@@ -84,21 +76,5 @@ OpenAiclient.interceptors.response.use(
   (error: AxiosError) => erroHandler(error),
 );
 
-/* basedAPi client interceptor */
-baseApiCLient.interceptors.request.use(
-  (config) => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
-  },
-  (error) => Promise.reject(error),
-);
 
-baseApiCLient.interceptors.response.use(
-  (response) => response,
-  (error: AxiosError) => erroHandler(error),
-);
-
-export { OpenAiclient, baseApiCLient };
+export { OpenAiclient };

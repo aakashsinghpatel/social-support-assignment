@@ -7,14 +7,10 @@ import { OpenAiclient } from "../utils/axioClient";
 * based on user input
 */
 export const generateAIText = async (prompt: string) => {
-  try {
     const response = await OpenAiclient.post("/chat/completions", {
       model: "gpt-3.5-turbo",
       messages: [{ role: "user", content: prompt }],
     });
 
     return response.data.choices[0].message.content;
-  } catch (error: any) {
-    throw error;
-  }
 };

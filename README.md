@@ -15,19 +15,17 @@ Use this Readme file as a template or starter document for any React application
 
 
 ## Setup
+1. Node version - `>=Version 20`
 
-1. Clone the repository and install the dependencies
+2. Clone the repository and install the dependencies
 ```bash
 npm install
 ```
-2. Start the frontend application locally
+3. Start the frontend application locally
 ```bash
 npm run dev
 ```
-3. Setup OpenAI API key 
-* Replace the `open_ai_key` with OPEN_AI_KEY for `VITE_OPENAI_KEY` variable in the `.env` file.
+4. Setup OpenAI API key 
+* Replace `OPEN_AI_KEY` with your actual OPENAI API key for the `VITE_OPENAI_KEY` variable in the `.env` file.
 
-4. Setup Base url for SubmitAPI Call (Optional)
-* If need to made actual api call for submit-
-* The replace the `VITE_API_BASE_URL` and `VITE_SUBMIT_DATA` as per base url and endpoint of submit API respectively in `.env` file.
 

@@ -22,7 +22,6 @@ function App() {
   const dispatch = useDispatch();
 
   const isRTL = i18n.language === "ar";
-
   /* useEffect-
    * To update store with localStorage data on app start
    */
