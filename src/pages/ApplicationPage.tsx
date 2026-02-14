@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 import { submitData } from "../services/application.service";
 import type { SituationDetails } from "../features/application/types";
 
+/* Lazy loading and code splitting */
 const PersonalDetails = lazy(
   () => import("../components/form/PersonalDetails/PersonalDetails"),
 );
