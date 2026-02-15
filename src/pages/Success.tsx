@@ -14,6 +14,9 @@ const Success = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
+  /*
+  * Focus the heading on load page
+  */
   useEffect(() => {
     headingRef?.current?.focus();
   });

@@ -22,6 +22,10 @@ class ErrorBoundary extends React.Component<Props, State> {
     this.state = { hasError: false, error: null };
   }
 
+  /* 
+  * getDerivedStateFromError
+  * Return value if some unexpected errror occur in the app
+  */
   static getDerivedStateFromError(error: Error): State {
     return { hasError: true, error };
   }
@@ -29,6 +33,11 @@ class ErrorBoundary extends React.Component<Props, State> {
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
     console.error("Error caught by ErrorBoundary:", error, errorInfo);
   }
+
+  /* 
+  * handleReload
+  * To reaload the page
+  */
 
   handleReload = () => {
     this.setState({ hasError: false, error: null });

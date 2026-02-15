@@ -14,7 +14,8 @@ const OpenAiclient = axios.create({
   },
 });
 
-/*  Error handler : Handel varius error code, Timeout etc
+/*
+* Error handler : Handel varius error code, Timeout etc
 * It handle all error based on status code and return error message accordingly
 * used for OpenAIClient
 */

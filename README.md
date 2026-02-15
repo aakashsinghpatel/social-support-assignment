@@ -19,7 +19,13 @@ npm install
 ```bash
 npm run dev
 ```
-4. Setup OpenAI API key 
+
+5. Create build (For deployment)
+```bash
+npm run build
+```
+
+5. Setup OpenAI API key 
 * Replace `OPEN_AI_KEY` with your actual OPENAI API key for the `VITE_OPENAI_KEY` variable in the `.env` file.
 
 

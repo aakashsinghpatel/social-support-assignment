@@ -32,7 +32,7 @@ const FamilyFinancialDetails = ({ onNext, onBack }: FamilyFinancialDetailsProps)
   const financialData = useSelector(selectFamilyFinanceDetails);
 
   /* 
-   * Created form with react-hook form and enbled custom valid with zod lib at control level
+   * Created form with react-hook form and enbled custom validation with zod lib at form/control level
   */
   const {
     register,
@@ -64,7 +64,7 @@ const FamilyFinancialDetails = ({ onNext, onBack }: FamilyFinancialDetailsProps)
 
   /* 
     * handleOnKeyDown: <event>
-    * Diallow non number input to number field: Income etc.
+    * Dis-allow non number input to number field: Income etc.
   */
   const handleOnKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (

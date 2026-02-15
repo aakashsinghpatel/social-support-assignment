@@ -26,7 +26,7 @@ const AIHelperModal = ({ open, label, suggestion, onAccept, onClose }: AiModalPr
   const { t } = useTranslation();
 
   /* 
-  * update test and status on modal close
+  * update text and status on modal close
   */
   const handleClose = () => {
     setIsEditing(false);

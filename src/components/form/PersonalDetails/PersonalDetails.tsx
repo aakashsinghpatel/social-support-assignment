@@ -35,7 +35,7 @@ const PersonalDetails = ({ onNext }: PersonalDetailsProps) => {
   const personalData = useSelector(selectPersonalDetails);
 
   /* 
-   * Created form with react-hook form and enbled custom valid with zod lib at control level
+   * Created form with react-hook form and enbled custom validation with zod lib at form/control level
   */
   const {
     register,
