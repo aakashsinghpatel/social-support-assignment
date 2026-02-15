@@ -184,10 +184,10 @@ export const createFamilyFinanceDetailsSchema = (t: (key: string) => string) =>
         }),
     ),
     /* Housing status status field validation
-     * should be valid non-empty string of min length 10
+     * should be valid non-empty string of min length 5
      */
     housingStatus: z.string()
-      .min(10, t("validationError.financialInfo.housingStatus.required"),
+      .min(5, t("validationError.financialInfo.housingStatus.required"),
     ),
   });
 
