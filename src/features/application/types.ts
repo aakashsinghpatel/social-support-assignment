@@ -2,15 +2,15 @@ import type { Dayjs } from "dayjs";
 
 /* Type of applciation state */
 export interface ApplicationState {
-  personalDetails: PersonalDetails;
-  familyFinanceDetails: FamilyFinanceDetails;
-  situationDetails: SituationDetails;
+  personalDetails: PersonalDetailsType;
+  familyFinanceDetails: FamilyFinanceDetailsType;
+  situationDetails: SituationDetailsType;
   currentStep: number;
   loading: boolean;
   errorMessage: string | null;
 }
 
-export interface PersonalDetails {
+export interface PersonalDetailsType {
   name: string;
   nationalId: string;
   dob: string | number | Date | Dayjs | null;
@@ -23,14 +23,14 @@ export interface PersonalDetails {
   email: string;
 }
 
-export interface FamilyFinanceDetails {
+export interface FamilyFinanceDetailsType {
   maritalStatus: string;
   dependents: number | null;
   employmentStatus: string;
   monthlyIncome: number;
   housingStatus: string;
 }
-export interface SituationDetails {
+export interface SituationDetailsType {
   financialSituation: string;
   employmentCircumstances: string;
   reasonForApplying: string;

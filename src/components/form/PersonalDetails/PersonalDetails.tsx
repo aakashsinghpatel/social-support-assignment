@@ -21,11 +21,11 @@ import { selectPersonalDetails } from "../../../features/application/applicaionS
 
 import { useEffect } from "react";
 import { saveToStorage } from "../../../utils/localStorage";
-import type { PersonalDetails } from "../../../features/application/types";
+import type { PersonalDetailsType } from "../../../features/application/types";
 
 type PersonalDetailsProps = {
-  onNext: ()=>void;
-}
+  onNext: () => void;
+};
 
 const PersonalDetails = ({ onNext }: PersonalDetailsProps) => {
   const { t } = useTranslation();
@@ -34,9 +34,9 @@ const PersonalDetails = ({ onNext }: PersonalDetailsProps) => {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const personalData = useSelector(selectPersonalDetails);
 
-  /* 
+  /*
    * Created form with react-hook form and enbled custom validation with zod lib at form/control level
-  */
+   */
   const {
     register,
     handleSubmit,
@@ -48,19 +48,19 @@ const PersonalDetails = ({ onNext }: PersonalDetailsProps) => {
     defaultValues: personalData,
   });
 
-  /* 
+  /*
    * Help to update form with data save locally
-  */
+   */
   useEffect(() => {
     reset(personalData);
-  }, [personalData,reset]);
+  }, [personalData, reset]);
 
-  /* 
-    * onSubmit
-    * Method to save personal details on click of next button to store and local storage
-  */
-  const onSubmit = (data: PersonalDetails) => {
-    const updateData:PersonalDetails = {
+  /*
+   * onSubmit
+   * Method to save personal details on click of next button to store and local storage
+   */
+  const onSubmit = (data: PersonalDetailsType) => {
+    const updateData: PersonalDetailsType = {
       ...data,
       dob: data.dob ? dayjs(data.dob).toISOString() : null,
     };
@@ -86,10 +86,10 @@ const PersonalDetails = ({ onNext }: PersonalDetailsProps) => {
       >
         {t("personalinfo")}
       </Typography>
-        {/* Personal Detail form */}
+      {/* Personal Detail form */}
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         <Grid container spacing={2} className="newcalss">
-            {/* Name field */}
+          {/* Name field */}
           <Grid size={{ xs: 12, sm: 6 }}>
             <TextField
               label={t("name")}
@@ -99,7 +99,7 @@ const PersonalDetails = ({ onNext }: PersonalDetailsProps) => {
               helperText={errors.name?.message as string}
             />
           </Grid>
-            {/* National ID field */}
+          {/* National ID field */}
           <Grid size={{ xs: 12, sm: 6 }}>
             <TextField
               label={t("nationalId")}
@@ -109,19 +109,18 @@ const PersonalDetails = ({ onNext }: PersonalDetailsProps) => {
               helperText={errors.nationalId?.message as string}
             />
           </Grid>
-            {/* Date of Birth Field */}
+          {/* Date of Birth Field */}
           <Grid size={{ xs: 12, sm: 6 }}>
             <Controller
               name="dob"
               control={control}
               render={({ field }) => (
                 <DatePicker
-                 sx={{
+                  sx={{
                     "& .MuiPickersInputBase-sectionsContainer": {
                       direction: "ltr",
                     },
                   }}
-                  
                   label={t("dob")}
                   format="DD/MM/YYYY"
                   value={field.value ? dayjs(field.value) : null}
@@ -132,13 +131,14 @@ const PersonalDetails = ({ onNext }: PersonalDetailsProps) => {
                       fullWidth: true,
                       error: !!errors.dob,
                       helperText: errors.dob?.message as string,
+                      inputProps: { "data-testid": "dob-input" },
                     },
                   }}
                 />
               )}
             />
           </Grid>
-            {/* Gender Field */}
+          {/* Gender Field */}
           <Grid size={{ xs: 12, sm: 6 }}>
             <Controller
               name="gender"
@@ -160,8 +160,8 @@ const PersonalDetails = ({ onNext }: PersonalDetailsProps) => {
               )}
             />
           </Grid>
-            
-            {/* Address Field */}
+
+          {/* Address Field */}
           <Grid size={{ xs: 12 }}>
             <TextField
               label={t("address")}
@@ -173,7 +173,7 @@ const PersonalDetails = ({ onNext }: PersonalDetailsProps) => {
               helperText={errors.address?.message as string}
             />
           </Grid>
-            {/* City Field */}
+          {/* City Field */}
           <Grid size={{ xs: 12, sm: 6 }}>
             <TextField
               label={t("city")}
@@ -183,7 +183,7 @@ const PersonalDetails = ({ onNext }: PersonalDetailsProps) => {
               helperText={errors.city?.message as string}
             />
           </Grid>
-            {/* State Field */}
+          {/* State Field */}
           <Grid size={{ xs: 12, sm: 6 }}>
             <TextField
               label={t("state")}
@@ -193,7 +193,7 @@ const PersonalDetails = ({ onNext }: PersonalDetailsProps) => {
               helperText={errors.state?.message as string}
             />
           </Grid>
-            {/* Country Field */}
+          {/* Country Field */}
           <Grid size={{ xs: 12, sm: 6 }}>
             <TextField
               label={t("country")}
@@ -203,7 +203,7 @@ const PersonalDetails = ({ onNext }: PersonalDetailsProps) => {
               helperText={errors.country?.message as string}
             />
           </Grid>
-            {/* Phone field */}
+          {/* Phone field */}
           <Grid size={{ xs: 12, sm: 6 }}>
             <TextField
               label={t("phone")}
@@ -213,7 +213,7 @@ const PersonalDetails = ({ onNext }: PersonalDetailsProps) => {
               helperText={errors.phone?.message as string}
             />
           </Grid>
-            {/* Email Field */}
+          {/* Email Field */}
           <Grid size={{ xs: 12, sm: 6 }}>
             <TextField
               label={t("email")}

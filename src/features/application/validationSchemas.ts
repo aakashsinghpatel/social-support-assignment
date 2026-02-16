@@ -23,7 +23,7 @@ export const createPersonalDetailsSchema = (t: (k: string) => string) =>
      ** nationalId field validation
      * String
      * UAE national id validation
-     * 15-ALphanumeric, start with 784-> 11 numbers -> end with sinle numberr
+     * 15-ALphanumeric, start with 784-> 11 numbers -> end with sinle number
      * minimum length 2 charater
      * max length character
      */

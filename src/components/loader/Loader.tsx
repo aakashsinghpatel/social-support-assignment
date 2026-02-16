@@ -1,19 +1,18 @@
 import { Backdrop, CircularProgress } from "@mui/material";
 
-
-
 type LoadingProps = {
-  loading:boolean
-}
-/* 
-  * Loader 
-  * Component to show while make submit API call
-  * To blur backgroung and make all field and btn no active
-*/
+  loading: boolean;
+};
+/*
+ * Loader
+ * Component to show while make submit API call
+ * To blur backgroung and make all field and btn no active
+ */
 const Loader = ({ loading }: LoadingProps) => {
   return (
     <>
       <Backdrop
+        data-testid="loader-backdrop"
         sx={{
           color: "#fff",
           zIndex: (theme) => theme.zIndex.drawer + 1,

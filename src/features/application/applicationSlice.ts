@@ -1,18 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type {
   ApplicationState,
-  FamilyFinanceDetails,
-  PersonalDetails,
-  SituationDetails,
+  FamilyFinanceDetailsType,
+  PersonalDetailsType,
+  SituationDetailsType,
 } from "./types";
 import { hasData } from "../../utils/validation";
 
+/* Intial state of application
+ * Initializing all state of application
+ */
 
-/* Intial state of application 
-  * Initializing all state of application
-*/
-
-const initPersonalDetails: PersonalDetails = {
+const initPersonalDetails: PersonalDetailsType = {
   name: "",
   nationalId: "",
   dob: "",
@@ -25,7 +24,7 @@ const initPersonalDetails: PersonalDetails = {
   email: "",
 };
 
-const initFamilyFinanceDetails: FamilyFinanceDetails = {
+const initFamilyFinanceDetails: FamilyFinanceDetailsType = {
   maritalStatus: "",
   dependents: 0,
   employmentStatus: "",
@@ -33,12 +32,11 @@ const initFamilyFinanceDetails: FamilyFinanceDetails = {
   housingStatus: "",
 };
 
-const initSituationDetails: SituationDetails = {
+const initSituationDetails: SituationDetailsType = {
   financialSituation: "",
   employmentCircumstances: "",
   reasonForApplying: "",
 };
-
 
 const initialState: ApplicationState = {
   personalDetails: initPersonalDetails,
@@ -67,20 +65,16 @@ const applicationSlice = createSlice({
       state.currentStep = action.payload;
     },
     setApplicationData: (state: ApplicationState, action) => {
-      const { personalDetails, familyFinanceDetails, situationDetails } =
-        action.payload;
+      const { personalDetails, familyFinanceDetails } = action.payload;
       let step = 0;
-      const [isPersonalDetails, isFinancialDetails, isSituationDetails] = [
+      const [isPersonalDetails, isFinancialDetails] = [
         hasData(personalDetails),
         hasData(familyFinanceDetails),
-        hasData(situationDetails),
       ];
-      if (isPersonalDetails && isFinancialDetails && isSituationDetails) {
+      if (isPersonalDetails && isFinancialDetails) {
         step = 2;
-      } else if (isPersonalDetails && isFinancialDetails) {
-        step = 1;
       } else if (isPersonalDetails) {
-        step = 0;
+        step = 1;
       }
       return { ...state, ...action.payload, currentStep: step };
     },

@@ -25,7 +25,7 @@ import {
   selectSituationDetails,
 } from "../../../features/application/applicaionSelector";
 import { saveToStorage } from "../../../utils/localStorage";
-import type { SituationDetails } from "../../../features/application/types";
+import type { SituationDetailsType } from "../../../features/application/types";
 
 type SituationDetailsProps = {
   onBack: () => void;
@@ -125,7 +125,7 @@ const SituationDetails = ({ onBack, onSubmitFinal }: SituationDetailsProps) => {
    * Save Situation details to redux and localStorage
    * initiate api call for final submit of all deatails
    */
-  const onSubmit = (situationDetails: SituationDetails) => {
+  const onSubmit = (situationDetails: SituationDetailsType) => {
     dispatch(saveSituationDetails(situationDetails));
     saveToStorage("situationDetails", situationDetails);
     onSubmitFinal();

@@ -1,11 +1,17 @@
-import type { FamilyFinanceDetails, PersonalDetails, SituationDetails } from "../features/application/types";
+import type {
+  FamilyFinanceDetailsType,
+  PersonalDetailsType,
+  SituationDetailsType,
+} from "../features/application/types";
 
-
-type localStorageValueType = PersonalDetails | FamilyFinanceDetails |SituationDetails;
+type localStorageValueType =
+  | PersonalDetailsType
+  | FamilyFinanceDetailsType
+  | SituationDetailsType;
 
 /* saveToStorage <key,data>
-* Method to save data to localstorage based on key
-*/
+ * Method to save data to localstorage based on key
+ */
 export const saveToStorage = (key: string, data: localStorageValueType) => {
   try {
     localStorage.setItem(key, JSON.stringify(data));
@@ -15,8 +21,8 @@ export const saveToStorage = (key: string, data: localStorageValueType) => {
 };
 
 /* loadFromStorage <key>
-* Method to get data from localstorage based on key
-*/
+ * Method to get data from localstorage based on key
+ */
 export const loadFromStorage = (key: string) => {
   try {
     const data = localStorage.getItem(key);
@@ -28,8 +34,8 @@ export const loadFromStorage = (key: string) => {
 };
 
 /* clearStorage
-* Method to clear/remover all data from localStorage
-*/
+ * Method to clear/remover all data from localStorage
+ */
 export const clearStorage = () => {
   try {
     localStorage.clear();
@@ -39,8 +45,8 @@ export const clearStorage = () => {
 };
 
 /* loadAllStepsData
-* Method to load all form data from localStorage
-*/
+ * Method to load all form data from localStorage
+ */
 export const loadAllStepsData = () => {
   return {
     personalDetails: loadFromStorage("personalDetails") || null,

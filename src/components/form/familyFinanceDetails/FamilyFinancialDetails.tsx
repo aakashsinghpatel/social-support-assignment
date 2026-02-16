@@ -17,23 +17,26 @@ import { useTranslation } from "react-i18next";
 import { selectFamilyFinanceDetails } from "../../../features/application/applicaionSelector";
 import { useEffect } from "react";
 import { saveToStorage } from "../../../utils/localStorage";
-import type { FamilyFinanceDetails } from "../../../features/application/types";
+import type { FamilyFinanceDetailsType } from "../../../features/application/types";
 
 type FamilyFinancialDetailsProps = {
-  onNext: ()=>void;
-  onBack: ()=>void;
-}
+  onNext: () => void;
+  onBack: () => void;
+};
 
-const FamilyFinancialDetails = ({ onNext, onBack }: FamilyFinancialDetailsProps) => {
+const FamilyFinancialDetails = ({
+  onNext,
+  onBack,
+}: FamilyFinancialDetailsProps) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const financialData = useSelector(selectFamilyFinanceDetails);
 
-  /* 
+  /*
    * Created form with react-hook form and enbled custom validation with zod lib at form/control level
-  */
+   */
   const {
     register,
     control,
@@ -45,27 +48,27 @@ const FamilyFinancialDetails = ({ onNext, onBack }: FamilyFinancialDetailsProps)
     defaultValues: financialData || {},
   });
 
-  /* 
+  /*
    * Help to update form with data save locally
-  */
+   */
   useEffect(() => {
     reset(financialData);
-  }, [financialData,reset]);
+  }, [financialData, reset]);
 
-  /* 
-    * onSubmit
-    * Method to save finaceDetail on click of next button to store and local storage
-  */
-  const onSubmit = (data: FamilyFinanceDetails) => {
+  /*
+   * onSubmit
+   * Method to save finaceDetail on click of next button to store and local storage
+   */
+  const onSubmit = (data: FamilyFinanceDetailsType) => {
     dispatch(saveFamilyFinanceDetails(data));
     saveToStorage("familyFinanceDetails", data);
     onNext();
   };
 
-  /* 
-    * handleOnKeyDown: <event>
-    * Dis-allow non number input to number field: Income etc.
-  */
+  /*
+   * handleOnKeyDown: <event>
+   * Dis-allow non number input to number field: Income etc.
+   */
   const handleOnKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (
       e.key === "-" ||
@@ -181,14 +184,14 @@ const FamilyFinancialDetails = ({ onNext, onBack }: FamilyFinancialDetailsProps)
             />
           </Grid>
         </Grid>
-        
+
         {/* Next and Back button */}
         <Box mt={4} display="flex" justifyContent="space-between">
           <Button
             variant="outlined"
             onClick={onBack}
             fullWidth={isMobile}
-            sx={{ mr:  2 }}
+            sx={{ mr: 2 }}
             aria-label="back"
           >
             {t("back")}
