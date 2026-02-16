@@ -28,4 +28,9 @@ npm run build
 5. Setup OpenAI API key 
 * Replace `OPEN_AI_KEY` with your actual OPENAI API key for the `VITE_OPENAI_KEY` variable in the `.env` file.
 
+6. To run unit test
+```bash
+npm test
+```
+
 
