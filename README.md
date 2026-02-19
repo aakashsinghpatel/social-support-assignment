@@ -289,6 +289,10 @@ Fix linting issues automatically:
   <img alt="Success" src="/public/screenshots/success.png">
 </section>
 <section style="display: flex; height: 200px; padding: 5px;margin-bottom:20px;">
+<img alt="Not Found Page" src="/public/screenshots/404.png">
+</section>
+**Arabic**
+<section style="display: flex; height: 200px; padding: 5px;margin-bottom:20px;">
   <img alt="Personal Arabic" src="/public/screenshots/Destop-Personal-Arabic.png">
 </section>
 <section style="display: flex; height: 200px; padding: 5px;margin-bottom:20px;">
@@ -298,8 +302,6 @@ Fix linting issues automatically:
   <img alt="Situation Arabic" src="/public/screenshots/Situation-Arabic.png">
 </section>
 <section style="display: flex; height: 200px; padding: 5px;margin-bottom:20px;">
-<img alt="Success Arabic" src="/public/screenshots/success-arabic.png.png">
+  <img alt="Success Arabic" src="/public/screenshots/success-arabic.png">
 </section>
-<section style="display: flex; height: 200px; padding: 5px;margin-bottom:20px;">
-<img alt="Not Found Page" src="/public/screenshots/404.png">
-</section>
+
