@@ -3,7 +3,7 @@ import AIHelperModal from "./AIHelperModal";
 
 // Mock useTranslation
 jest.mock("react-i18next", () => ({
-  useTranslation: () => ({ translate: (key: string) => key }),
+  useTranslation: () => ({ t: (key: string) => key }),
 }));
 
 // Test Suite for AIHelperModal component

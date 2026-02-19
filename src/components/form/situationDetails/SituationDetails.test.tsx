@@ -8,7 +8,7 @@ import userEvent from "@testing-library/user-event";
 import * as localStorageUtils from "../../../utils/localStorage";
 
 // Mock the axios client
-jest.mock("../../../utils/axioClient", () => ({
+jest.mock("../../../utils/axiosClient", () => ({
   default: {
     get: jest.fn(),
     post: jest.fn(),
