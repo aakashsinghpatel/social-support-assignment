@@ -56,7 +56,7 @@ The folder structure of the "Social Support Assignment" is designed to support s
 
 #### Hierarchical Organization
 
-**App Directory:** The 'app' directiry contains the global store configuration.
+**App Directory:** The 'app' directory contains the global store configuration.
 
 **Pages Directory:** The 'pages' directory contains top-level components, each representing a distinct page of the application. This approach aligns with React best practices, facilitating clear separation of concerns.
 
@@ -89,21 +89,21 @@ It manages language setup and supports multi-language functionality including RT
 
 **High level Diagram**
 
-<section style="display: flex; height: 250px; padding: 5px;">
+<section style="display: flex; height: 150px; padding: 5px;margin-bottom:20px;">
 <img alt="Desktop Home Page" src="/public/assets/high-level.png">
 </section>
 
 
 **Component Heirarchy**
 
-<section style="display: flex; height: 250px; padding: 5px;">
+<section style="display: flex; height: 200px; padding: 5px;margin-bottom:20px;">
 <img alt="Desktop Home Page" src="/public/assets/component-heirarchy.png">
 </section>
 
 
 **Data flow Diagram**
 
-<section style="display: flex; height: 250px; padding: 5px;">
+<section style="display: flex; height: 200px; padding: 5px;">
 <img alt="Desktop Home Page" src="/public/assets/dfd.png">
 </section>
 
@@ -235,7 +235,7 @@ To run the application in development mode:
   npm run dev
 ```
 
-This command starts the development server, which is a configuration layer for App. Open your browser and visit http://localhost:5173 to view the application.
+This command starts the development server. Open your browser and visit http://localhost:5173 to view the application.
 
 ### Build
 
