@@ -4,6 +4,7 @@ The app collects personal, family, and financial details, and integrates AI assi
 
 
 ## Table of Contents
+
     <ol>
         <li>
         <a href="#tech-stack">Tech Stack</a>
@@ -30,8 +31,6 @@ The app collects personal, family, and financial details, and integrates AI assi
         </ul>
         </li>
         <li><a href="#screenshots">Screenshots</a></li>
-        <li><a href="#links">Links</a></li>
-        <li><a href="#license">License</a></li>
     </ol>
 
 ## Tech Stack
@@ -102,7 +101,7 @@ It manages language setup and supports multi-language functionality including RT
 **High level Diagram**
 
 <section style="display: flex; height: 461px; padding: 5px;">
-<img alt="Desktop Home Page" src="/public/assets/high-level.png.png">
+<img alt="Desktop Home Page" src="/public/assets/high-level.png">
 </section>
 
 **Component Heirarchy**
@@ -111,7 +110,7 @@ It manages language setup and supports multi-language functionality including RT
 <img alt="Desktop Home Page" src="/public/assets/component-heirarchy.png">
 </section>
 
-**Data flow Heirarchy**
+**Data flow Diagram**
 
 <section style="display: flex; height: 461px; padding: 5px;">
 <img alt="Desktop Home Page" src="/public/assets/dfd.png">
