@@ -1,4 +1,4 @@
-import { OpenAiclient } from "../utils/axioClient";
+import { OpenAiclient } from "../utils/axiosClient";
 
 
 /* 

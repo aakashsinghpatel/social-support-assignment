@@ -83,7 +83,6 @@ describe("FamilyFinancialDetails - Validation + Submit", () => {
     const mockSaveToStorage = jest
       .spyOn(localStorageUtils, "saveToStorage")
       .mockImplementation(jest.fn());
-    screen.debug();
     const user = userEvent.setup();
     renderWithStore(
       <FamilyFinancialDetails onNext={mockNext} onBack={mockBack} />,

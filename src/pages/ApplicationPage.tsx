@@ -14,7 +14,7 @@ import { submitData } from "../services/application.service";
 
 /* Lazy loading and code splitting */
 const PersonalDetails = lazy(
-  () => import("../components/form/PersonalDetails/PersonalDetails"),
+  () => import("../components/form/personalDetails/PersonalDetails"),
 );
 const FamilyFinancialDetails = lazy(
   () =>

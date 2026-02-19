@@ -46,7 +46,7 @@ const SituationDetails = ({ onBack, onSubmitFinal }: SituationDetailsProps) => {
   const [loadingAI, setLoadingAI] = useState(false);
   const [loadingStep, setLoadingStep] = useState(0);
   const [aiSuggestion, setAiSuggestion] = useState("");
-  const [aiModalLable, setAiModalLable] = useState("");
+  const [aiModalLabel, setAiModalLabel] = useState("");
   const [open, setOpen] = useState(false);
   const [aiField, setAiField] =
     useState<SituationFormFieldType>("financialSituation");
@@ -86,17 +86,17 @@ const SituationDetails = ({ onBack, onSubmitFinal }: SituationDetailsProps) => {
       let prompt = "";
       if (fieldName == "financialSituation") {
         setLoadingStep(1);
-        setAiModalLable(t("financialSituation"));
+        setAiModalLabel(t("financialSituation"));
         prompt = `I am ${familyFinanceDetails.employmentStatus} with ${familyFinanceDetails.monthlyIncome} monthly income, 
         Help me describe my hardship.`;
       } else if (fieldName == "employmentCircumstances") {
         setLoadingStep(2);
-        setAiModalLable(t("employmentCircumstances"));
+        setAiModalLabel(t("employmentCircumstances"));
         prompt = `I am ${familyFinanceDetails.employmentStatus} with ${familyFinanceDetails.monthlyIncome} and ${familyFinanceDetails.dependents}, ${familyFinanceDetails.maritalStatus}, ${familyFinanceDetails.housingStatus}.Help me describe my employement circumstances.`;
       }
       if (fieldName == "reasonForApplying") {
         setLoadingStep(3);
-        setAiModalLable(t("reasonForApplying"));
+        setAiModalLabel(t("reasonForApplying"));
         prompt = `I am ${familyFinanceDetails.employmentStatus} with ${familyFinanceDetails.monthlyIncome} and ${familyFinanceDetails.dependents}, ${familyFinanceDetails.maritalStatus}, ${familyFinanceDetails.housingStatus}.Help me describe reasion for apply govt finance assistance.`;
       }
       const suggestion = await generateAIText(prompt);
@@ -272,7 +272,7 @@ const SituationDetails = ({ onBack, onSubmitFinal }: SituationDetailsProps) => {
       {open ? (
         <AIHelperModal
           open={open}
-          label={aiModalLable}
+          label={aiModalLabel}
           suggestion={aiSuggestion}
           onAccept={(text: string) => setSuggestionToField(text)}
           onClose={() => {
