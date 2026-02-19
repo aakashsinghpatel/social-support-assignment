@@ -106,11 +106,6 @@ const PersonalDetails = ({ onNext }: PersonalDetailsProps) => {
               control={control}
               render={({ field }) => (
                 <DatePicker
-                  sx={{
-                    "& .MuiPickersInputBase-sectionsContainer": {
-                      direction: "ltr",
-                    },
-                  }}
                   label={translate("dob")}
                   format="DD/MM/YYYY"
                   value={field.value ? dayjs(field.value) : null}

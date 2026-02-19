@@ -90,21 +90,21 @@ It manages language setup and supports multi-language functionality including RT
 **High level Diagram**
 
 <section style="display: flex; height: 150px; padding: 5px;margin-bottom:20px;">
-<img alt="Desktop Home Page" src="/public/assets/high-level.png">
+<img alt="High level Diagram" src="/public/assets/high-level.png">
 </section>
 
 
 **Component Heirarchy**
 
 <section style="display: flex; height: 200px; padding: 5px;margin-bottom:20px;">
-<img alt="Desktop Home Page" src="/public/assets/component-heirarchy.png">
+<img alt="Component Heirarchy" src="/public/assets/component-heirarchy.png">
 </section>
 
 
 **Data flow Diagram**
 
 <section style="display: flex; height: 200px; padding: 5px;">
-<img alt="Desktop Home Page" src="/public/assets/dfd.png">
+<img alt="Data flow diagram" src="/public/assets/dfd.png">
 </section>
 
 ## Project Folder Structure
@@ -211,7 +211,7 @@ Before proceeding with the installation, ensure you have the following prerequis
 ```bash
   npm install
 ```
-4. Environment Variables Setup (Windows)
+4. Environment Variables Setup
 
 This project requires environment variables.
 Create a .env file in the root directory by copying the example file:
@@ -270,3 +270,36 @@ Fix linting issues automatically:
 ```bash
   npm run lint-fix
 ```
+
+### Screenshots
+**English**
+<section style="display: flex; height: 200px; padding: 5px;margin-bottom:20px;">
+  <img alt="Personal Details" src="/public/screenshots/Desktop-Personal.png">
+</section>
+<section style="display: flex; height: 200px; padding: 5px;margin-bottom:20px;">
+  <img alt="Family Finance" src="/public/screenshots/Desktop-FamilyFinance.png">
+</section>
+<section style="display: flex; height: 200px; padding: 5px;margin-bottom:20px;">
+  <img alt="Situation" src="/public/screenshots/Situation.png">
+</section>
+<section style="display: flex; height: 200px; padding: 5px;margin-bottom:20px;">
+  <img alt="AI suggestion Modal" src="/public/screenshots/Suggestion-dialog.png">
+</section>
+<section style="display: flex; height: 200px; padding: 5px;margin-bottom:20px;">
+  <img alt="Success" src="/public/screenshots/success.png">
+</section>
+<section style="display: flex; height: 200px; padding: 5px;margin-bottom:20px;">
+  <img alt="Personal Arabic" src="/public/screenshots/Destop-Personal-Arabic.png">
+</section>
+<section style="display: flex; height: 200px; padding: 5px;margin-bottom:20px;">
+  <img alt="Family Finance Arabic" src="/public/screenshots/Desktop-FamilyFinance-Arabic.png">
+</section>
+<section style="display: flex; height: 200px; padding: 5px;margin-bottom:20px;">
+  <img alt="Situation Arabic" src="/public/screenshots/Situation-Arabic.png">
+</section>
+<section style="display: flex; height: 200px; padding: 5px;margin-bottom:20px;">
+<img alt="Success Arabic" src="/public/screenshots/success-arabic.png.png">
+</section>
+<section style="display: flex; height: 200px; padding: 5px;margin-bottom:20px;">
+<img alt="Not Found Page" src="/public/screenshots/404.png">
+</section>
