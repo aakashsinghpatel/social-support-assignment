@@ -115,7 +115,6 @@ social-support-assignment
 ├─ src
 │ ├─ App.tsx
 │ ├─ main.tsx
-│ ├─ index.css
 │ ├─ components
 │ │ ├─ aiHelperDialog
 │ │ │ ├─ AIHelperDialog.tsx
