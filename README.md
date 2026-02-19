@@ -215,11 +215,11 @@ Before proceeding with the installation, ensure you have the following prerequis
 
 This project requires environment variables.
 Create a .env file in the root directory by copying the example file:
-**Windows-**
+**Windows**
 ```bash 
 copy .env.example .env
 ```
-**Mac-**
+**Mac**
 ```bash 
 cp .env.example .env
 ```
